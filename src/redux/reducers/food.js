@@ -1,4 +1,4 @@
-import {ADD_FOOD, DELETE_FOOD, SET_FORM} from '../actions/types';
+import {ADD_FOOD, DELETE_FOOD, SET_FORM, CHECK_FORM} from '../actions/types';
 
 const initialState = {
   form: {name: ''},
@@ -12,7 +12,7 @@ const foodReducers = (state = initialState, action) => {
       return {
         ...state,
         form: {...state.form, [action.inputType]: action.inputValue},
-        // formValid: {...state.formValid},
+        formValid: null,
       };
     case ADD_FOOD:
       return state.form.name.length === 0
