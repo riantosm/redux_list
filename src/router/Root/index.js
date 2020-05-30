@@ -1,19 +1,17 @@
-import 'react-native-gesture-handler';
-import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import FoodForm from './src/foodForm';
-import FoodList from './src/foodList';
+import * as React from 'react';
+import {FoodForm, FoodList} from '../../screens';
 
 const Stack = createStackNavigator();
 
-export default function App() {
+export default function Root() {
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: 'purple',
+            backgroundColor: '#474787',
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
