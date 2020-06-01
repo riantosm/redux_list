@@ -1,7 +1,8 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import * as React from 'react';
-import {FoodForm, FoodList} from '../../screens';
+import {ItemForm, ItemList} from '../../screens';
+import {colors as c} from '../../styles';
 
 const Stack = createStackNavigator();
 
@@ -11,7 +12,7 @@ export default function Root() {
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: '#474787',
+            backgroundColor: c.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -20,19 +21,19 @@ export default function Root() {
         }}>
         <Stack.Screen
           name="Form"
-          component={FoodForm}
+          component={ItemForm}
           options={{
-            title: 'Form',
+            title: 'Add Item',
             headerTitleAlign: 'center',
           }}
         />
         <Stack.Screen
           name="List"
           options={{
-            title: 'List Items',
+            title: 'List Item',
             headerTitleAlign: 'center',
           }}
-          component={FoodList}
+          component={ItemList}
         />
       </Stack.Navigator>
     </NavigationContainer>

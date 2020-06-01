@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import {FlatList, StyleSheet, Text} from 'react-native';
 import {Icon, ListItem} from 'react-native-elements';
 import {connect} from 'react-redux';
-import {deleteFood} from '../../redux/actions/food';
+import {deleteItem} from '../../redux/actions/item';
+import {fonts as f, colors as c} from '../../styles';
 
-class FoodList extends Component {
+class ItemList extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -14,18 +15,21 @@ class FoodList extends Component {
     return (
       <FlatList
         style={s.listContainer}
-        data={this.props.foods}
+        data={this.props.items}
         keyExtractor={(item, index) => item.key.toString()}
         ListEmptyComponent={<Text style={s.text}>No data</Text>}
         renderItem={data => (
           <ListItem
             title={data.item.name}
             bottomDivider
+            titleStyle={{
+              fontFamily: f.GoogleSans_Medi,
+            }}
             rightIcon={
               <Icon
                 name="delete"
                 size={36}
-                color={'#474787'}
+                color={c.primary}
                 onPress={() => this.props.delete(data.item.key)}
               />
             }
@@ -38,20 +42,20 @@ class FoodList extends Component {
 
 const mapStateToProps = state => {
   return {
-    foods: state.foodReducer.foodList,
+    items: state.itemReducer.itemList,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    delete: key => dispatch(deleteFood(key)),
+    delete: key => dispatch(deleteItem(key)),
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(FoodList);
+)(ItemList);
 
 const s = StyleSheet.create({
   container: {
@@ -62,5 +66,6 @@ const s = StyleSheet.create({
   text: {
     textAlign: 'center',
     padding: 20,
+    fontFamily: f.GoogleSans_Medi,
   },
 });

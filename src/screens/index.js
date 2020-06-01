@@ -1,4 +1,4 @@
-import FoodForm from './FoodForm';
-import FoodList from './FoodList';
+import ItemForm from './ItemForm';
+import ItemList from './ItemList';
 
-export {FoodForm, FoodList};
+export {ItemForm, ItemList};

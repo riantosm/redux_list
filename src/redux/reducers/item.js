@@ -1,12 +1,12 @@
-import {ADD_FOOD, DELETE_FOOD, SET_FORM, CHECK_FORM} from '../actions/types';
+import {ADD_ITEM, DELETE_ITEM, SET_FORM, CHECK_FORM} from '../actions/types';
 
 const initialState = {
   form: {name: ''},
   formValid: null,
-  foodList: [],
+  itemList: [],
 };
 
-const foodReducers = (state = initialState, action) => {
+const itemReducers = (state = initialState, action) => {
   switch (action.type) {
     case SET_FORM:
       return {
@@ -14,7 +14,7 @@ const foodReducers = (state = initialState, action) => {
         form: {...state.form, [action.inputType]: action.inputValue},
         formValid: null,
       };
-    case ADD_FOOD:
+    case ADD_ITEM:
       return state.form.name.length === 0
         ? {
             ...state,
@@ -22,21 +22,21 @@ const foodReducers = (state = initialState, action) => {
           }
         : {
             ...state,
-            foodList: state.foodList.concat({
+            itemList: state.itemList.concat({
               key: Math.random(),
               name: action.data,
             }),
             formValid: true,
             form: {name: ''},
           };
-    case DELETE_FOOD:
+    case DELETE_ITEM:
       return {
         ...state,
-        foodList: state.foodList.filter(item => item.key !== action.key),
+        itemList: state.itemList.filter(item => item.key !== action.key),
       };
     default:
       return state;
   }
 };
 
-export default foodReducers;
+export default itemReducers;
